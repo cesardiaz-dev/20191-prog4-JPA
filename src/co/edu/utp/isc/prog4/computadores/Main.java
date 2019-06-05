@@ -24,13 +24,13 @@ public class Main {
 
         System.out.println("Guardando Usuarios");
 
-        Usuario user = new Usuario(10030619L, "Cesar", "Diaz");
-        user.setGenero('M');
-        service.guardarUsuario(user);
-
-        user = new Usuario(12516017L, "Aleandro", "Cardenas");
-        user.setGenero('M');
-        service.guardarUsuario(user);
+//        Usuario user = new Usuario(10030619L, "Cesar", "Diaz");
+//        user.setGenero('M');
+//        service.guardarUsuario(user);
+//
+//        user = new Usuario(12516017L, "Aleandro", "Cardenas");
+//        user.setGenero('M');
+//        service.guardarUsuario(user);
 
         System.out.println("Listando los usuarios creados");
         List<Usuario> listarUsuarios = service.listarUsuarios();
@@ -39,8 +39,8 @@ public class Main {
         }
 
         System.out.println("Consultando un usuario existente");
-        user = service.consultarUsuario(10030619L);
-        System.out.println(user);
+        Usuario user2 = service.consultarUsuario(10030619L);
+        System.out.println(user2.getNombre());
     }
 
 }

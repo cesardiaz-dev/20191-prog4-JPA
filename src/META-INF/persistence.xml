@@ -9,6 +9,7 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         
         <class>co.edu.utp.isc.prog4.computadores.modelo.Usuario</class>
+        <!--<class>co.edu.utp.isc.prog4.computadores.modelo.Computador</class>-->
         
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
