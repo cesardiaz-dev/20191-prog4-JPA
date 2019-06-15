@@ -6,8 +6,11 @@
 package co.edu.utp.isc.prog4.computadores.modelo;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,9 +23,15 @@ public class Usuario implements Serializable {
 
     @Id
     private Long identificacion;
+    @Column(name = "first_name",length = 100)
     private String nombre;
+    @Column(name = "last_name")
     private String apellido;
+    @Column(name = "gender", length = 1)
     private Character genero;
+    
+    @ManyToMany
+    private List<Rol> roles;
 
     public Usuario() {
     }
@@ -63,6 +72,14 @@ public class Usuario implements Serializable {
 
     public void setGenero(Character genero) {
         this.genero = genero;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 
     @Override

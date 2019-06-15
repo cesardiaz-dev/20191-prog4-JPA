@@ -5,6 +5,7 @@
  */
 package co.edu.utp.isc.prog4.computadores.controllador;
 
+import co.edu.utp.isc.prog4.computadores.modelo.Rol;
 import co.edu.utp.isc.prog4.computadores.modelo.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -40,7 +41,7 @@ public class ComputadoresService {
 
         Query query = em.createQuery("SELECT u FROM Usuario u");
         List<Usuario> resp = (List<Usuario>) query.getResultList();
-
+        
         em.close();
         return resp;
     }
@@ -49,6 +50,37 @@ public class ComputadoresService {
         EntityManager em = getEntityManager();
 
         Usuario resp = em.find(Usuario.class, identificador);
+
+        em.close();
+        return resp;
+    }
+    
+    public void eliminarUsuario(Long identificador){
+        EntityManager em = getEntityManager();
+
+        em.getTransaction().begin();
+        Usuario usuario = em.find(Usuario.class, identificador);
+        em.remove(usuario);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    public Rol crearRol(Rol rol){
+       EntityManager em = getEntityManager();
+
+        em.getTransaction().begin();
+        rol = em.merge(rol);
+
+        em.getTransaction().commit();
+        em.close(); 
+        return rol;
+    }
+    
+    public Rol consultarRol(Long id){
+        EntityManager em = getEntityManager();
+
+        Rol resp = em.find(Rol.class, id);
 
         em.close();
         return resp;
